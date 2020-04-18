@@ -55,10 +55,10 @@ namespace RandomUserGenerator.Utils
                     userDAO.thumbnailUrl = userModel.ImageUrl ?? userDAO.thumbnailUrl;
                     break;
                 case ImageType.Medium:
-                    userDAO.thumbnailUrl = userModel.ImageUrl ?? userDAO.thumbnailUrl;
+                    userDAO.mediumUrl = userModel.ImageUrl ?? userDAO.mediumUrl;
                     break;
                 case ImageType.Large:
-                    userDAO.thumbnailUrl = userModel.ImageUrl ?? userDAO.thumbnailUrl;
+                    userDAO.largeUrl = userModel.ImageUrl ?? userDAO.largeUrl;
                     break;
             }
             return userDAO;

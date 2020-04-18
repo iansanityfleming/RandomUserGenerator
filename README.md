@@ -12,11 +12,11 @@ DynamoDB Local requires a Access/Secret key set up in your AWS profile - but the
 
 *
 
-### Installation
+### Installation (With dynamodb-local docker container)
  
 1. Clone the repo
 ```sh
-git clone https://github.com/github_username/repo.git
+git clone https://github.com/iansanityfleming/RandomUserGenerator.git
 ```
 
 2. Set up AWS credentials (if none)

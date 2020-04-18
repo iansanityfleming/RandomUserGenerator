@@ -50,7 +50,7 @@ namespace RandomUserGenerator.Controllers
             return updatedUser;
         }
 
-        //POST api/randomuser/createorupdateuser
+        //POST api/randomuser/deleteuser
         [Route("DeleteUser")]
         [HttpDelete]
         public async Task<string> DeleteUser(int id)
