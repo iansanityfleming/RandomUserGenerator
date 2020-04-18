@@ -11,7 +11,7 @@ namespace DataAccess
         Task<UserModel> GetUser(int id);
         Task<IEnumerable<UserModel>> GetUsers(IEnumerable<int> ids);
         Task<UserModel> UpdateUser(UserModel updatedUser);
-
+        Task<IEnumerable<UserModel>> GetUsersByName(string name);
         Task<bool> DeleteUser(int id);
     }
 }

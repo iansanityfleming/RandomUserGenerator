@@ -59,6 +59,15 @@ namespace RandomUserGeneratorTests
             var updatedUser = _randomUserController.CreateOrUpdateUser(user).Result.Value;
             Assert.AreEqual(user.FirstName, updatedUser.FirstName);
         }
+
+        [Test]
+        public void SeachForUserByName()
+        {
+            var id = _mockRandomIDGenerator.GetRandomID();
+            var expectedName = $"{testUserName}{id}";
+            var user = _randomUserController.GetUsersByName(expectedName).Result.Value.FirstOrDefault();
+            Assert.AreEqual(expectedName, user.FirstName);
+        }
         #endregion Tests
 
 
@@ -111,6 +120,13 @@ namespace RandomUserGeneratorTests
                 //There is no value testing this feature as all it does is call the DynamoDB deleteItem method
                 //I would effectively only be testing that the DynamoDB API is functioning.
                 return true;
+            }
+
+            public async Task<IEnumerable<UserModel>> GetUsersByName(string name)
+            {
+                return _fakeUsers
+                    .Where(x => x.Value.firstName.Contains(name) || x.Value.lastName.Contains(name))
+                    .Select(x => x.Value.ToUserModel());
             }
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 

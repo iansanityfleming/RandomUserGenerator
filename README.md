@@ -108,6 +108,13 @@ https://localhost:44366/randomuser/getusers?numberOfUsers=3
 [{"id":18,"email":"emily.grewal@example.com","title":"Ms","firstName":"Emily","lastName":"Grewal","dateOfBirth":"1968-04-28T15:43:27.394+12:00","phoneNumber":"869-062-6623","imageUrl":"https://randomuser.me/api/portraits/thumb/women/59.jpg","imageType":0},{"id":28,"email":"oya.fahri@example.com","title":"Ms","firstName":"Oya","lastName":"Fahri","dateOfBirth":"1964-07-24T05:19:29.792+12:00","phoneNumber":"(526)-488-4598","imageUrl":"https://randomuser.me/api/portraits/thumb/women/50.jpg","imageType":0},{"id":40,"email":"alissa.arnaud@example.com","title":"Mademoiselle","firstName":"Alissa","lastName":"Arnaud","dateOfBirth":"1969-05-18T05:35:01.665+12:00","phoneNumber":"078 080 40 08","imageUrl":"https://randomuser.me/api/portraits/thumb/women/7.jpg","imageType":0}]
 ```
 
+### Get user by name
+HTTPGET
+https://localhost:44366/randomuser/getusersbyname?name=Emily
+```sh
+[{"id":18,"email":"emily.grewal@example.com","title":"Ms","firstName":"Emily","lastName":"Grewal","dateOfBirth":"1968-04-28T15:43:27.394+12:00","phoneNumber":"869-062-6623","imageUrl":"https://randomuser.me/api/portraits/thumb/women/59.jpg","imageType":0}]
+```
+
 ### Update/Create user
 HTTPPOST
 Example request body

@@ -41,6 +41,15 @@ namespace RandomUserGenerator.Controllers
             return users.ToArray();
         }
 
+        //GET api/randomuser/getusersbyname
+        [Route("GetUsersByName")]
+        [HttpGet]
+        public async Task<ActionResult<UserModel[]>> GetUsersByName(string name)
+        {
+            var users = await _userWorker.GetUsersByName(name);
+            return users.ToArray();
+        }
+
         //POST api/randomuser/createorupdateuser
         [Route("CreateOrUpdateUser")]
         [HttpPost]

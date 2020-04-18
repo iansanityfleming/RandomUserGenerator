@@ -29,6 +29,30 @@ namespace DataAccess.Impl
             return userDao.ToUserModel(ImageType.Large);
         }
 
+        public async Task<IEnumerable<UserModel>> GetUsersByName(string name) {
+
+            var condition = new Condition
+            {
+                ComparisonOperator = ComparisonOperator.CONTAINS,
+                AttributeValueList = new List<AttributeValue> { new AttributeValue { S = name } }
+            };
+
+            var scanRequest = new ScanRequest
+            {
+                TableName = Constants.UserTableName,
+                ConditionalOperator = ConditionalOperator.OR,
+                ScanFilter = new Dictionary<string, Condition>
+                {
+                    { "firstName", condition },
+                    { "lastName", condition }
+                }
+            };
+
+            var results = await _amazonDynamoDB.ScanAsync(scanRequest);
+            var userDaos = results.Items.Select(x => x.MapSimpleResponse<User>());
+            return userDaos.Select(x => x.ToUserModel());
+        }
+
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         //it does have await operators, they are just in the linq query.
         public async Task<IEnumerable<UserModel>> GetUsers(IEnumerable<int> ids)
